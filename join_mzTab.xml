@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<batch>
+    <batchstep method="net.sf.mzmine.modules.peaklistmethods.io.mztabimport.MzTabImportModule">
+        <parameter name="mzTab files">
+            <file>REPLACEME</file>
+        </parameter>
+        <parameter name="Import raw data files?">true</parameter>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.peaklistmethods.alignment.ransac.RansacAlignerModule">
+        <parameter name="Peak lists" type="ALL_PEAKLISTS"/>
+        <parameter name="Peak list name">Aligned peak list</parameter>
+        <parameter name="m/z tolerance">
+            <absolutetolerance>0.001</absolutetolerance>
+            <ppmtolerance>5.0</ppmtolerance>
+        </parameter>
+        <parameter name="RT tolerance" type="absolute">0.3</parameter>
+        <parameter name="RT tolerance after correction" type="absolute">0.1</parameter>
+        <parameter name="RANSAC iterations">1000</parameter>
+        <parameter name="Minimum number of points">0.05</parameter>
+        <parameter name="Threshold value">3.0</parameter>
+        <parameter name="Linear model">false</parameter>
+        <parameter name="Require same charge state">false</parameter>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.peaklistmethods.gapfilling.peakfinder.multithreaded.MultiThreadPeakFinderModule">
+        <parameter name="Peak lists" type="BATCH_LAST_PEAKLISTS"/>
+        <parameter name="Name suffix">gap-filled</parameter>
+        <parameter name="Intensity tolerance">0.05</parameter>
+        <parameter name="m/z tolerance">
+            <absolutetolerance>0.001</absolutetolerance>
+            <ppmtolerance>5.0</ppmtolerance>
+        </parameter>
+        <parameter name="Retention time tolerance" type="absolute">0.1</parameter>
+        <parameter name="Remove original peak list">true</parameter>
+    </batchstep>
+    <batchstep method="net.sf.mzmine.modules.peaklistmethods.io.mztabexport.MzTabExportModule">
+        <parameter name="Peak lists" type="BATCH_LAST_PEAKLISTS"/>
+        <parameter name="Filename">/OUTPUTPATH/merged.mzTab</parameter>
+        <parameter name="Include all peaks">true</parameter>
+    </batchstep>
+</batch>
