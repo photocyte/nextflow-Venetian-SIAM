@@ -4,9 +4,8 @@ Channel.fromPath("Pos_Profile_to_mzTab.xml").set{ batch_xml_ch }
 
 raws_ch1.combine(batch_xml_ch).set{ raw_and_batch_cmd_ch }
 
-
 process PosProfile_mzML_to_mzTab {
-  executor 'local'
+  executor 'lsf'
   publishDir "mzTab_results",mode:"copy"
   input:
      set file(ms_data),file(batch_xml) from raw_and_batch_cmd_ch
@@ -25,7 +24,7 @@ process PosProfile_mzML_to_mzTab {
 Channel.fromPath("join_mzTab.xml").set{ join_xml_ch }
 
 process loadMzTabs_join {
-  executor 'local'
+  executor 'lsf'
   publishDir "mzTab_results",mode:"copy"
 input:
   file mzTabs from mzTab_ch.collect()
