@@ -25,6 +25,10 @@ Channel.fromPath("join_mzTab.xml").set{ join_xml_ch }
 
 process loadMzTabs_join {
   executor 'lsf'
+  queue '14'
+  memory '500 GB'
+  scratch 'ram-disk'
+  stageInMode 'copy'
   publishDir "mzTab_results",mode:"copy"
 input:
   file mzTabs from mzTab_ch.collect()
