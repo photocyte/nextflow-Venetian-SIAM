@@ -9,15 +9,16 @@
         <parameter name="Raw data files" type="BATCH_LAST_FILES"/>
         <parameter name="Scans">
             <retention_time>
-                <min>9.0</min>
-                <max>13.0</max>
+                <min>0.5</min>
+                <max>20.0</max>
             </retention_time>
             <polarity>NEGATIVE</polarity>
+            <ms_level>1</ms_level>
             <scan_definition/>
         </parameter>
         <parameter name="m/z">
             <min>100.0</min>
-            <max>2000.0</max>
+            <max>800.0</max>
         </parameter>
         <parameter name="Suffix">FILTERED</parameter>
         <parameter name="Remove source file after filtering">true</parameter>
@@ -27,10 +28,10 @@
         <parameter name="Scans"/>
         <parameter name="Mass detector" selected="Exact mass">
             <module name="Centroid">
-                <parameter name="Noise level"/>
+                <parameter name="Noise level">1.0</parameter>
             </module>
             <module name="Exact mass">
-                <parameter name="Noise level">10000.0</parameter>
+                <parameter name="Noise level">30000.0</parameter>
             </module>
             <module name="Local maxima">
                 <parameter name="Noise level"/>
@@ -55,11 +56,11 @@
             <ms_level>1</ms_level>
         </parameter>
         <parameter name="Mass list">masses</parameter>
-        <parameter name="Min time span (min)">0.1</parameter>
-        <parameter name="Min height">1.0</parameter>
+        <parameter name="Min time span (min)">0.06</parameter>
+        <parameter name="Min height">10000.0</parameter>
         <parameter name="m/z tolerance">
             <absolutetolerance>5.0E-4</absolutetolerance>
-            <ppmtolerance>2.0</ppmtolerance>
+            <ppmtolerance>20.0</ppmtolerance>
         </parameter>
         <parameter name="Suffix">chromatograms</parameter>
     </batchstep>
@@ -92,14 +93,14 @@
                 <parameter name="Derivative threshold level"/>
             </module>
             <module name="Local minimum search">
-                <parameter name="Chromatographic threshold">0.1</parameter>
-                <parameter name="Search minimum in RT range (min)">0.3</parameter>
-                <parameter name="Minimum relative height">0.05</parameter>
-                <parameter name="Minimum absolute height">1.0</parameter>
-                <parameter name="Min ratio of peak top/edge">2.0</parameter>
+                <parameter name="Chromatographic threshold">0.0</parameter>
+                <parameter name="Search minimum in RT range (min)">0.1</parameter>
+                <parameter name="Minimum relative height">0.01</parameter>
+                <parameter name="Minimum absolute height">10000.0</parameter>
+                <parameter name="Min ratio of peak top/edge">1.0</parameter>
                 <parameter name="Peak duration range (min)">
                     <min>0.0</min>
-                    <max>999999.0</max>
+                    <max>9.9999999E7</max>
                 </parameter>
             </module>
             <module name="Wavelets (XCMS)">
@@ -137,8 +138,8 @@
             </module>
         </parameter>
         <parameter measure="MEDIAN" name="m/z center calculation" weighting="NONE">CenterFunction</parameter>
-        <parameter name="m/z range for MS2 scan pairing (Da)" selected="true">1.0</parameter>
-        <parameter name="RT range for MS2 scan pairing (min)" selected="true">1.0</parameter>
+        <parameter name="m/z range for MS2 scan pairing (Da)" selected="false">1.0</parameter>
+        <parameter name="RT range for MS2 scan pairing (min)" selected="false">1.0</parameter>
         <parameter name="Remove original peak list">true</parameter>
     </batchstep>
     <batchstep method="net.sf.mzmine.modules.peaklistmethods.identification.adductsearch.AdductSearchModule">
