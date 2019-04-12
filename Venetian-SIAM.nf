@@ -1,6 +1,7 @@
 
 Channel.fromPath("/lab/weng_scratch/tmp/Big_tracing/*.mzML").into{ raws_ch1 ; raws_ch2 }
 Channel.fromPath("Pos_Profile_to_mzTab.xml").set{ batch_xml_ch }
+Channel.fromPath("join_mzTab.xml").set{ join_xml_ch }
 
 raws_ch1.combine(batch_xml_ch).set{ raw_and_batch_cmd_ch }
 
@@ -21,7 +22,6 @@ process PosProfile_mzML_to_mzTab {
     cat output.mzTab | sed 's/FILTERED//g' > ${ms_data}.mzTab
     """
 }
-Channel.fromPath("join_mzTab.xml").set{ join_xml_ch }
 
 process loadMzTabs_join {
   executor 'lsf'
