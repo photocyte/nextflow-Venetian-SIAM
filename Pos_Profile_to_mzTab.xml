@@ -95,9 +95,9 @@
             <module name="Local minimum search">
                 <parameter name="Chromatographic threshold">0.0</parameter>
                 <parameter name="Search minimum in RT range (min)">0.6</parameter>
-                <parameter name="Minimum relative height">0.01</parameter>
+                <parameter name="Minimum relative height">0.0025</parameter>
                 <parameter name="Minimum absolute height">10000.0</parameter>
-                <parameter name="Min ratio of peak top/edge">1.0</parameter>
+                <parameter name="Min ratio of peak top/edge">9.0</parameter>
                 <parameter name="Peak duration range (min)">
                     <min>0.0</min>
                     <max>9.9999999E7</max>
