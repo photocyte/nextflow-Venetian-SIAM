@@ -27,6 +27,7 @@ process loadMzTabs_join {
   executor 'lsf'
   queue '14'
   memory '500 GB'
+  clusterOptions '-m it-bigboy'
   scratch 'ram-disk'
   stageInMode 'copy'
   publishDir "mzTab_results",mode:"copy"
