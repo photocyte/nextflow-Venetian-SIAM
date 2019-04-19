@@ -91,6 +91,84 @@
         <parameter name="Reset the peak number ID">true</parameter>
         <parameter name="Remove source peak list after filtering">true</parameter>
     </batchstep>
+    <batchstep method="net.sf.mzmine.modules.peaklistmethods.peakpicking.deconvolution.DeconvolutionModule">
+        <parameter name="Peak lists" type="BATCH_LAST_PEAKLISTS"/>
+        <parameter name="Suffix">deconvoluted</parameter>
+        <parameter name="Algorithm" selected="Local minimum search">
+            <module name="Baseline cut-off">
+                <parameter name="Min peak height"/>
+                <parameter name="Peak duration range (min)">
+                    <min>0.0</min>
+                    <max>10.0</max>
+                </parameter>
+                <parameter name="Baseline level"/>
+            </module>
+            <module name="Noise amplitude">
+                <parameter name="Min peak height"/>
+                <parameter name="Peak duration range (min)">
+                    <min>0.0</min>
+                    <max>10.0</max>
+                </parameter>
+                <parameter name="Amplitude of noise"/>
+            </module>
+            <module name="Savitzky-Golay">
+                <parameter name="Min peak height">1.0</parameter>
+                <parameter name="Peak duration range (min)">
+                    <min>0.0</min>
+                    <max>10.0</max>
+                </parameter>
+                <parameter name="Derivative threshold level">0.2</parameter>
+            </module>
+            <module name="Local minimum search">
+                <parameter name="Chromatographic threshold">0.0025</parameter>
+                <parameter name="Search minimum in RT range (min)">0.3</parameter>
+                <parameter name="Minimum relative height">0.0025</parameter>
+                <parameter name="Minimum absolute height">10000.0</parameter>
+                <parameter name="Min ratio of peak top/edge">2.0</parameter>
+                <parameter name="Peak duration range (min)">
+                    <min>0.06</min>
+                    <max>9.999999999999E12</max>
+                </parameter>
+            </module>
+            <module name="Wavelets (XCMS)">
+                <parameter name="S/N threshold">10.0</parameter>
+                <parameter name="Wavelet scales">
+                    <min>0.25</min>
+                    <max>5.0</max>
+                </parameter>
+                <parameter name="Peak duration range">
+                    <min>0.0</min>
+                    <max>10.0</max>
+                </parameter>
+                <parameter name="Peak integration method">Use smoothed data</parameter>
+                <parameter name="R engine">RCaller</parameter>
+            </module>
+            <module name="Wavelets (ADAP)">
+                <parameter name="S/N threshold">10.0</parameter>
+                <parameter name="S/N estimator">
+                    <module name="Intensity window SN"/>
+                    <module name="Wavelet Coeff. SN">
+                        <parameter name="Peak width mult.">3.0</parameter>
+                        <parameter name="abs(wavelet coeffs.)">true</parameter>
+                    </module>
+                </parameter>
+                <parameter name="min feature height">10.0</parameter>
+                <parameter name="coefficient/area threshold">110.0</parameter>
+                <parameter name="Peak duration range">
+                    <min>0.0</min>
+                    <max>10.0</max>
+                </parameter>
+                <parameter name="RT wavelet range">
+                    <min>0.001</min>
+                    <max>0.1</max>
+                </parameter>
+            </module>
+        </parameter>
+        <parameter measure="MEDIAN" name="m/z center calculation" weighting="NONE">CenterFunction</parameter>
+        <parameter name="m/z range for MS2 scan pairing (Da)" selected="false"/>
+        <parameter name="RT range for MS2 scan pairing (min)" selected="false"/>
+        <parameter name="Remove original peak list">true</parameter>
+    </batchstep>
     <batchstep method="net.sf.mzmine.modules.peaklistmethods.io.mztabexport.MzTabExportModule">
         <parameter name="Peak lists" type="BATCH_LAST_PEAKLISTS"/>
         <parameter name="Filename">/OUTPUTPATH/output.mzTab</parameter>
