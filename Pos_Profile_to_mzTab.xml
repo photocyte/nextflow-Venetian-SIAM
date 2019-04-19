@@ -64,6 +64,33 @@
         </parameter>
         <parameter name="Suffix">chromatograms</parameter>
     </batchstep>
+    <batchstep method="net.sf.mzmine.modules.peaklistmethods.filtering.rowsfilter.RowsFilterModule">
+        <parameter name="Peak lists" type="BATCH_LAST_PEAKLISTS"/>
+        <parameter name="Name suffix">long_duration_removed</parameter>
+        <parameter name="Minimum peaks in a row" selected="false"/>
+        <parameter name="Minimum peaks in an isotope pattern" selected="false"/>
+        <parameter name="m/z" selected="false">
+            <min>288.0148</min>
+            <max>288.0178</max>
+        </parameter>
+        <parameter name="Retention time" selected="false"/>
+        <parameter name="Peak duration range" selected="true">
+            <min>19.3</min>
+            <max>100.0</max>
+        </parameter>
+        <parameter name="Chromatographic FWHM" selected="false">
+            <min>0.0</min>
+            <max>1.0</max>
+        </parameter>
+        <parameter name="Parameter">No parameters defined</parameter>
+        <parameter name="Only identified?">false</parameter>
+        <parameter name="Text in identity" selected="false"/>
+        <parameter name="Text in comment" selected="false"/>
+        <parameter name="Keep or remove rows">Remove rows that match all criteria</parameter>
+        <parameter name="Keep only peaks with MS2 scan (GNPS)">false</parameter>
+        <parameter name="Reset the peak number ID">true</parameter>
+        <parameter name="Remove source peak list after filtering">true</parameter>
+    </batchstep>
     <batchstep method="net.sf.mzmine.modules.peaklistmethods.peakpicking.deconvolution.DeconvolutionModule">
         <parameter name="Peak lists" type="BATCH_LAST_PEAKLISTS"/>
         <parameter name="Suffix">deconvoluted</parameter>
@@ -85,12 +112,12 @@
                 <parameter name="Amplitude of noise"/>
             </module>
             <module name="Savitzky-Golay">
-                <parameter name="Min peak height"/>
+                <parameter name="Min peak height">1.0</parameter>
                 <parameter name="Peak duration range (min)">
                     <min>0.0</min>
                     <max>10.0</max>
                 </parameter>
-                <parameter name="Derivative threshold level"/>
+                <parameter name="Derivative threshold level">0.2</parameter>
             </module>
             <module name="Local minimum search">
                 <parameter name="Chromatographic threshold">0.0</parameter>
