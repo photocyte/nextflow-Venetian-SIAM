@@ -171,7 +171,7 @@
     </batchstep>
     <batchstep method="net.sf.mzmine.modules.peaklistmethods.identification.adductsearch.AdductSearchModule">
         <parameter name="Peak lists" type="BATCH_LAST_PEAKLISTS"/>
-        <parameter name="RT tolerance" type="absolute">0.2</parameter>
+        <parameter name="RT tolerance" type="absolute">0.3</parameter>
         <parameter name="Adducts">
             <adduct mass_difference="21.9825" name="[M+Na-H]" selected="true"/>
             <adduct mass_difference="37.9559" name="[M+K-H]" selected="false"/>
