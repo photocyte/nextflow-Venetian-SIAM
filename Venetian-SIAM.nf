@@ -7,6 +7,7 @@ raws_ch1.combine(batch_xml_ch).set{ raw_and_batch_cmd_ch }
 
 process PosProfile_mzML_to_mzTab {
   executor 'lsf'
+  queue '14'
   publishDir "mzTab_results",mode:"copy"
   input:
      set file(ms_data),file(batch_xml) from raw_and_batch_cmd_ch
