@@ -31,18 +31,18 @@ process loadMzTabs_join {
   scratch 'ram-disk'
   stageInMode 'copy'
   publishDir "mzTab_results",mode:"copy"
-input:
-  file mzTabs from mzTab_ch.collect()
-  file mzRaws from raws_ch2.collect()
-  file join_xml from join_xml_ch
-output:
-  file "merged.mzTab"
-script:
-"""
-THEWD=\$(pwd)
-python -c "import re; import glob; import os; l1 = glob.glob('*.mzTab'); l2 = [os.path.abspath(s) for s in l1]; l3 = [s + '</file>' for s in l2]; l4 = ['<file>' + s for s in l3]; replacement = '\\n'.join(l4); read_handle = open('$join_xml','r'); data = read_handle.read(); read_handle.close(); data=re.sub('<file>REPLACEME</file>',replacement,data); data=re.sub('/OUTPUTPATH','\$THEWD',data); write_handle = open('modified_batch.xml','w'); write_handle.write(data); write_handle.close()"
-/lab/solexa_weng/testtube/MZmine-2.38/startMZmine_Linux.sh `readlink -f modified_batch.xml`
-"""
+  input:
+    file mzTabs from mzTab_ch.collect()
+    file mzRaws from raws_ch2.collect()
+    file join_xml from join_xml_ch
+  output:
+    file "merged.mzTab"
+  script:
+    """
+    THEWD=\$(pwd)
+    python -c "import re; import glob; import os; l1 = glob.glob('*.mzTab'); l2 = [os.path.abspath(s) for s in l1]; l3 = [s + '</file>' for s in l2]; l4 = ['<file>' + s for s in l3]; replacement = '\\n'.join(l4); read_handle = open('$join_xml','r'); data = read_handle.read(); read_handle.close(); data=re.sub('<file>REPLACEME</file>',replacement,data); data=re.sub('/OUTPUTPATH','\$THEWD',data); write_handle = open('modified_batch.xml','w'); write_handle.write(data); write_handle.close()"
+    /lab/solexa_weng/testtube/MZmine-2.38/startMZmine_Linux.sh `readlink -f modified_batch.xml`
+    """
 }
 
 
