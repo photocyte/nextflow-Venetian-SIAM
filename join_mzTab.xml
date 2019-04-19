@@ -4,7 +4,7 @@
         <parameter name="mzTab files">
             <file>REPLACEME</file>
         </parameter>
-        <parameter name="Import raw data files?">true</parameter>
+        <parameter name="Import raw data files?">false</parameter>
     </batchstep>
     <batchstep method="net.sf.mzmine.modules.peaklistmethods.alignment.join.JoinAlignerModule">
         <parameter name="Peak lists" type="BATCH_LAST_PEAKLISTS"/>

@@ -33,7 +33,7 @@ process loadMzTabs_join {
   publishDir "mzTab_results",mode:"copy"
   input:
     file mzTabs from mzTab_ch.collect()
-    file mzRaws from raws_ch2.collect()
+    #file mzRaws from raws_ch2.collect()
     file join_xml from join_xml_ch
   output:
     file "merged.mzTab"
