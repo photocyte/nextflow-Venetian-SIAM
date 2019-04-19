@@ -169,52 +169,6 @@
         <parameter name="RT range for MS2 scan pairing (min)" selected="false">1.0</parameter>
         <parameter name="Remove original peak list">true</parameter>
     </batchstep>
-    <batchstep method="net.sf.mzmine.modules.peaklistmethods.identification.adductsearch.AdductSearchModule">
-        <parameter name="Peak lists" type="BATCH_LAST_PEAKLISTS"/>
-        <parameter name="RT tolerance" type="absolute">0.3</parameter>
-        <parameter name="Adducts">
-            <adduct mass_difference="21.9825" name="[M+Na-H]" selected="true"/>
-            <adduct mass_difference="37.9559" name="[M+K-H]" selected="false"/>
-            <adduct mass_difference="21.9694" name="[M+Mg-2H]" selected="false"/>
-            <adduct mass_difference="17.0265" name="[M+NH3]" selected="false"/>
-            <adduct mass_difference="97.9769" name="[M+H3PO4]" selected="false"/>
-            <adduct mass_difference="97.9674" name="[M+H2SO4]" selected="false"/>
-            <adduct mass_difference="62.0004" name="[M+H2CO3]" selected="false"/>
-            <adduct mass_difference="5.0" name="[(Deuterium)]glycerol" selected="false"/>
-        </parameter>
-        <parameter name="m/z tolerance">
-            <absolutetolerance>0.001</absolutetolerance>
-            <ppmtolerance>5.0</ppmtolerance>
-        </parameter>
-        <parameter name="Max relative adduct peak height">0.5</parameter>
-    </batchstep>
-    <batchstep method="net.sf.mzmine.modules.peaklistmethods.filtering.rowsfilter.RowsFilterModule">
-        <parameter name="Peak lists" type="BATCH_LAST_PEAKLISTS"/>
-        <parameter name="Name suffix">no_sodium_adducts</parameter>
-        <parameter name="Minimum peaks in a row" selected="false"/>
-        <parameter name="Minimum peaks in an isotope pattern" selected="false"/>
-        <parameter name="m/z" selected="false">
-            <min>288.0148</min>
-            <max>288.0178</max>
-        </parameter>
-        <parameter name="Retention time" selected="false"/>
-        <parameter name="Peak duration range" selected="false">
-            <min>0.0</min>
-            <max>10.0</max>
-        </parameter>
-        <parameter name="Chromatographic FWHM" selected="false">
-            <min>5.0</min>
-            <max>100.0</max>
-        </parameter>
-        <parameter name="Parameter">No parameters defined</parameter>
-        <parameter name="Only identified?">false</parameter>
-        <parameter name="Text in identity" selected="true">M+Na-H</parameter>
-        <parameter name="Text in comment" selected="false"/>
-        <parameter name="Keep or remove rows">Remove rows that match all criteria</parameter>
-        <parameter name="Keep only peaks with MS2 scan (GNPS)">false</parameter>
-        <parameter name="Reset the peak number ID">false</parameter>
-        <parameter name="Remove source peak list after filtering">true</parameter>
-    </batchstep>
     <batchstep method="net.sf.mzmine.modules.peaklistmethods.io.mztabexport.MzTabExportModule">
         <parameter name="Peak lists" type="BATCH_LAST_PEAKLISTS"/>
         <parameter name="Filename">/OUTPUTPATH/output.mzTab</parameter>

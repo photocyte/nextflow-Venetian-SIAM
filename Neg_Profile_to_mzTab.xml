@@ -169,26 +169,6 @@
         <parameter name="RT range for MS2 scan pairing (min)" selected="false">1.0</parameter>
         <parameter name="Remove original peak list">true</parameter>
     </batchstep>
-    <batchstep method="net.sf.mzmine.modules.peaklistmethods.identification.adductsearch.AdductSearchModule">
-        <parameter name="Peak lists" type="BATCH_LAST_PEAKLISTS"/>
-        <parameter name="RT tolerance" type="absolute">0.3</parameter>
-        <parameter name="Adducts">
-            <adduct mass_difference="21.9825" name="[M+Na-H]" selected="false"/>
-            <adduct mass_difference="37.9559" name="[M+K-H]" selected="false"/>
-            <adduct mass_difference="21.9694" name="[M+Mg-2H]" selected="false"/>
-            <adduct mass_difference="17.0265" name="[M+NH3]" selected="false"/>
-            <adduct mass_difference="97.9769" name="[M+H3PO4]" selected="false"/>
-            <adduct mass_difference="97.9674" name="[M+H2SO4]" selected="false"/>
-            <adduct mass_difference="62.0004" name="[M+H2CO3]" selected="false"/>
-            <adduct mass_difference="5.0" name="[(Deuterium)]glycerol" selected="false"/>
-            <adduct mass_difference="4.0071" name="15N1-13C3" selected="true"/>
-        </parameter>
-        <parameter name="m/z tolerance">
-            <absolutetolerance>0.001</absolutetolerance>
-            <ppmtolerance>5.0</ppmtolerance>
-        </parameter>
-        <parameter name="Max relative adduct peak height">2.0</parameter>
-    </batchstep>
     <batchstep method="net.sf.mzmine.modules.peaklistmethods.io.mztabexport.MzTabExportModule">
         <parameter name="Peak lists" type="BATCH_LAST_PEAKLISTS"/>
         <parameter name="Filename">/OUTPUTPATH/output.mzTab</parameter>
