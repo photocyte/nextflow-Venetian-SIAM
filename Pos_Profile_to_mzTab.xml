@@ -31,7 +31,7 @@
                 <parameter name="Noise level">1.0</parameter>
             </module>
             <module name="Exact mass">
-                <parameter name="Noise level">30000.0</parameter>
+                <parameter name="Noise level">10000.0</parameter>
             </module>
             <module name="Local maxima">
                 <parameter name="Noise level"/>
@@ -126,7 +126,7 @@
                 <parameter name="Minimum absolute height">10000.0</parameter>
                 <parameter name="Min ratio of peak top/edge">2.0</parameter>
                 <parameter name="Peak duration range (min)">
-                    <min>0.0</min>
+                    <min>0.06</min>
                     <max>9.9999999E7</max>
                 </parameter>
             </module>
