@@ -14,7 +14,7 @@
             <ppmtolerance>10.0</ppmtolerance>
         </parameter>
         <parameter name="Weight for m/z">5.0</parameter>
-        <parameter name="Retention time tolerance" type="absolute">0.55</parameter>
+        <parameter name="Retention time tolerance" type="absolute">0.65</parameter>
         <parameter name="Weight for RT">1.0</parameter>
         <parameter name="Require same charge state">false</parameter>
         <parameter name="Require same ID">false</parameter>
