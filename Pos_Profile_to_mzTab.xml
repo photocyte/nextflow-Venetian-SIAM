@@ -20,7 +20,7 @@
             <min>100.0</min>
             <max>800.0</max>
         </parameter>
-        <parameter name="Suffix">FILTERED</parameter>
+        <parameter name="Suffix">CROPPED</parameter>
         <parameter name="Remove source file after filtering">true</parameter>
     </batchstep>
     <batchstep method="net.sf.mzmine.modules.rawdatamethods.peakpicking.massdetection.MassDetectionModule">

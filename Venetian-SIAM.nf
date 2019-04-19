@@ -19,7 +19,7 @@ process PosProfile_mzML_to_mzTab {
     ABSPATHDATA=\$(readlink -f $ms_data)
     python -c "import re; read_handle = open('$batch_xml','r'); data = read_handle.read(); read_handle.close(); data=re.sub('input.mzML','\$ABSPATHDATA',data); data=re.sub('/OUTPUTPATH','\$THEWD',data); write_handle = open('modified_batch.xml','w'); write_handle.write(data); write_handle.close()"
     /lab/solexa_weng/testtube/MZmine-2.38/startMZmine_Linux.sh `readlink -f modified_batch.xml`    
-    cat output.mzTab | sed 's/FILTERED//g' > ${ms_data}.mzTab
+    cat output.mzTab | sed 's/CROPPED//g' > ${ms_data}.mzTab
     """
 }
 
